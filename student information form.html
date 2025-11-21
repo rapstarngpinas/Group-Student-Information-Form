@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Information Form</title>
+
+  <style>
+    :root {
+      --max-width: 900px;
+      --accent: #2563eb;
+      --muted: #6b7280;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --radius: 10px;
+      --gap: 14px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      margin: 0;
+      padding: 40px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 25px;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+      width: 100%;
+    }
+
+    form {
+      display: grid;
+      gap: var(--gap);
+    }
+
+    .row {
+      display: flex;
+      gap: 16px;
+    }
+
+    .col {
+      flex: 1;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 15px;
+      border: 1px solid #d6d9df;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    fieldset {
+      border: 1px dashed #c7d1e0;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    legend {
+      font-size: 15px;
+      color: var(--accent);
+      padding: 0 8px;
+      font-weight: bold;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    button {
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    button[type="reset"] {
+      background: #e5e7eb;
+      color: #111;
+    }
+
+    button[type="submit"] {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 700px) {
+      .row {
+        flex-direction: column;
+      }
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1 style="margin:0">Student Information Form</h1>
+      <p class="small" style="margin-top:6px; color:var(--muted)">
+        Please fill in the student's information below.
+      </p>
+    </header>
+
+    <section class="card">
+      <form action="#" method="post" novalidate>
+        
+        <fieldset>
+          <legend>Personal Information</legend>
+
+          <div class="row">
+            <div class="col">
+              <label for="lastName">Last Name:</label>
+              <input id="lastName" type="text" required placeholder="Your answer">
+            </div>
+
+            <div class="col">
+              <label for="firstName">First Name:</label>
+              <input id="firstName" type="text" required placeholder="Your answer">
+            </div>
+
+            <div class="col">
+              <label for="middleName">Middle Name (Optional):</label>
+              <input id="middleName" type="text" placeholder="Your answer">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="course">Course:</label>
+              <select id="course" required>
+                <option value="">Select Course</option>
+                <option>BSIT</option>
+                <option>BSCPE</option>
+                <option>BSBA</option>
+                <option>BSEd</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="col">
+              <label for="year">Year:</label>
+              <select id="year" required>
+                <option value="">Select Year</option>
+                <option>1st Year</option>
+                <option>2nd Year</option>
+                <option>3rd Year</option>
+                <option>4th Year</option>
+              </select>
+            </div>
+
+            <div class="col">
+              <label for="section">Section:</label>
+              <select id="section">
+                <option value="">Select Section</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+                <option>D</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="studentNumber">Student Number:</label>
+              <input id="studentNumber" type="text" required placeholder="Your answer">
+            </div>
+
+            <div class="col">
+              <label for="dob">Date of Birth:</label>
+              <input id="dob" type="date" required>
+            </div>
+
+            <div class="col">
+              <label>Gender:</label>
+              <div style="display:flex; gap:10px; align-items:center">
+                <label><input type="radio" name="gender" required> Male</label>
+                <label><input type="radio" name="gender"> Female</label>
+                <label><input type="radio" name="gender"> Other</label>
+              </div>
+            </div>
+          </div>
+
+          <label for="address">Complete Address:</label>
+          <textarea id="address" required placeholder="Your answer"></textarea>
+
+          <div class="row">
+            <div class="col">
+              <label for="contact">Contact Number:</label>
+              <input id="contact" type="tel" placeholder="Your answer">
+            </div>
+
+            <div class="col">
+              <label for="email">Email:</label>
+              <input id="email" type="email" placeholder="Your answer">
+            </div>
+          </div>
+
+        </fieldset>
+
+        <div class="actions">
+          <button type="reset">Reset</button>
+          <button type="submit">Submit</button>
+        </div>
+
+      </form>
+    </section>
+
+    </p>
+  </div>
+
+</body>
+</html>
