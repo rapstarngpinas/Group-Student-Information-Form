@@ -1,147 +1,137 @@
-<!Doctype html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Student Information Form</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartoon Dashboard - Student Form</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap');
 
-  <style>
-    :root {
-      --max-width: 900px;
-      --accent: #2563eb;
-      --muted: #6b7280;
-      --bg: #f1f5f9;
-      --card: #ffffff;
-      --radius: 10px;
-      --gap: 14px;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-    }
+  :root {
+    --accent: #ff6b81;      /* Cartoon pink/red */
+    --accent-dark: #ff3b5c;
+    --bg: #fdf6f0;
+    --card: #ffffff;
+    --radius: 15px;
+    --shadow: 0 10px 25px rgba(0,0,0,0.08);
+    --muted: #6b7280;
+    --gap: 16px;
+  }
 
-    body {
-      background: var(--bg);
-      margin: 0;
-      padding: 40px 0;
-      display: flex;
-      justify-content: center;
-    }
+  * { box-sizing: border-box; margin:0; padding:0; font-family: 'Baloo 2', cursive; }
+  body { background: var(--bg); display: flex; min-height: 100vh; }
 
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      padding: 20px;
-    }
+  /* Sidebar */
+  .sidebar {
+    width: 220px;
+    background: var(--accent);
+    color: #fff;
+    border-top-right-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+  }
 
-    header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+  .sidebar h2 { font-size: 24px; margin-bottom: 40px; }
+  .sidebar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 20px;
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    transition: background 0.3s;
+  }
+  .sidebar a:hover { background: var(--accent-dark); }
 
-    .card {
-      background: var(--card);
-      padding: 25px;
-      border-radius: var(--radius);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
-      width: 100%;
-    }
+  /* Main content */
+  .main {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+  }
 
-    form {
-      display: grid;
-      gap: var(--gap);
-    }
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  header h1 { font-size: 28px; color: var(--accent-dark); }
+  header p { color: var(--muted); margin-top: 6px; }
 
-    .row {
-      display: flex;
-      gap: 16px;
-    }
+  /* Card form */
+  .card {
+    background: var(--card);
+    padding: 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    max-width: 800px;
+    margin: auto;
+  }
 
-    .col {
-      flex: 1;
-    }
+  form { display: grid; gap: var(--gap); }
 
-    label {
-      display: block;
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 5px;
-    }
+  .row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .col { flex: 1; min-width: 150px; }
 
-    input, select, textarea {
-      width: 100%;
-      padding: 10px 12px;
-      font-size: 15px;
-      border: 1px solid #d6d9df;
-      border-radius: 8px;
-      box-sizing: border-box;
-    }
+  label { display: block; margin-bottom: 5px; font-weight: 600; color: var(--muted); }
+  input, select, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    border: 1px solid #d6d9df;
+    font-size: 15px;
+    outline: none;
+    transition: border 0.3s;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--accent); }
 
-    textarea {
-      min-height: 80px;
-      resize: vertical;
-    }
+  textarea { min-height: 80px; resize: vertical; }
 
-    fieldset {
-      border: 1px dashed #c7d1e0;
-      padding: 15px;
-      border-radius: 10px;
-    }
+  fieldset { border: 2px dashed #ffd6dc; padding: 15px; border-radius: var(--radius); }
+  legend { font-weight: bold; color: var(--accent-dark); }
 
-    legend {
-      font-size: 15px;
-      color: var(--accent);
-      padding: 0 8px;
-      font-weight: bold;
-    }
+  .actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 10px; }
+  button {
+    border: none;
+    padding: 10px 18px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  button[type="reset"] { background: #e5e7eb; color: #111; }
+  button[type="submit"] { background: var(--accent); color: #fff; }
 
-    .actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    button {
-      border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 500;
-    }
-
-    button[type="reset"] {
-      background: #e5e7eb;
-      color: #111;
-    }
-
-    button[type="submit"] {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    /* Mobile adjustments */
-    @media (max-width: 700px) {
-      .row {
-        flex-direction: column;
-      }
-      .card {
-        padding: 20px;
-      }
-    }
-  </style>
+  /* Mobile portrait */
+  @media (max-width: 768px) {
+    body { flex-direction: column; }
+    .sidebar { width: 100%; flex-direction: row; justify-content: space-around; border-radius: 0; padding: 20px 10px; margin-bottom: 20px; }
+    .main { padding: 15px; }
+    .row { flex-direction: column; }
+  }
+</style>
 </head>
-
 <body>
-  <div class="container">
+
+  <!-- Sidebar Dashboard -->
+  <div class="sidebar">
+    <h2>My Dashboard</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Students</a>
+    <a href="#">Reports</a>
+    <a href="#">Settings</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
     <header>
-      <h1 style="margin:0">Student Information Form</h1>
-      <p class="small" style="margin-top:6px; color:var(--muted)">
-        Please fill in the student's information below.
-      </p>
+      <h1>Student Information Form</h1>
+      <p>Please fill in the student's information below.</p>
     </header>
 
     <section class="card">
       <form action="#" method="post" novalidate>
-        
         <fieldset>
           <legend>Personal Information</legend>
 
@@ -150,12 +140,10 @@
               <label for="lastName">Last Name:</label>
               <input id="lastName" type="text" required placeholder="Your answer">
             </div>
-
             <div class="col">
               <label for="firstName">First Name:</label>
               <input id="firstName" type="text" required placeholder="Your answer">
             </div>
-
             <div class="col">
               <label for="middleName">Middle Name (Optional):</label>
               <input id="middleName" type="text" placeholder="Your answer">
@@ -174,7 +162,6 @@
                 <option>Other</option>
               </select>
             </div>
-
             <div class="col">
               <label for="year">Year:</label>
               <select id="year" required>
@@ -185,7 +172,6 @@
                 <option>4th Year</option>
               </select>
             </div>
-
             <div class="col">
               <label for="section">Section:</label>
               <select id="section">
@@ -204,12 +190,10 @@
               <label for="studentNumber">Student Number:</label>
               <input id="studentNumber" type="text" required placeholder="Your answer">
             </div>
-
             <div class="col">
               <label for="dob">Date of Birth:</label>
               <input id="dob" type="date" required>
             </div>
-
             <div class="col">
               <label>Gender:</label>
               <div style="display:flex; gap:10px; align-items:center">
@@ -228,7 +212,6 @@
               <label for="contact">Contact Number:</label>
               <input id="contact" type="tel" placeholder="Your answer">
             </div>
-
             <div class="col">
               <label for="email">Email:</label>
               <input id="email" type="email" placeholder="Your answer">
@@ -244,8 +227,6 @@
 
       </form>
     </section>
-
-    </p>
   </div>
 
 </body>
