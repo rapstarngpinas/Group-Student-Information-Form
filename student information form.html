@@ -4,231 +4,130 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Information Form</title>
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap');
-
-  :root {
-    --accent: #ff6b81;      /* Cartoon pink/red */
-    --accent-dark: #ff3b5c;
-    --bg: #fdf6f0;
-    --card: #ffffff;
-    --radius: 15px;
-    --shadow: 0 10px 25px rgba(0,0,0,0.08);
-    --muted: #6b7280;
-    --gap: 16px;
-  }
-
-  * { box-sizing: border-box; margin:0; padding:0; font-family: 'Baloo 2', cursive; }
-  body { background: var(--bg); display: flex; min-height: 100vh; }
-
-  /* Sidebar */
-  .sidebar {
-    width: 220px;
-    background: var(--accent);
-    color: #fff;
-    border-top-right-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
-    display: flex;
-    flex-direction: column;
-    padding: 30px 20px;
-  }
-
-  .sidebar h2 { font-size: 24px; margin-bottom: 40px; }
-  .sidebar a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    margin-bottom: 20px;
-    padding: 10px 12px;
-    border-radius: var(--radius);
-    transition: background 0.3s;
-  }
-  .sidebar a:hover { background: var(--accent-dark); }
-
-  /* Main content */
-  .main {
-    flex: 1;
-    padding: 30px;
-    overflow-y: auto;
-  }
-
-  header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  header h1 { font-size: 28px; color: var(--accent-dark); }
-  header p { color: var(--muted); margin-top: 6px; }
-
-  /* Card form */
-  .card {
-    background: var(--card);
-    padding: 25px;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    max-width: 800px;
-    margin: auto;
-  }
-
-  form { display: grid; gap: var(--gap); }
-
-  .row { display: flex; gap: 16px; flex-wrap: wrap; }
-  .col { flex: 1; min-width: 150px; }
-
-  label { display: block; margin-bottom: 5px; font-weight: 600; color: var(--muted); }
-  input, select, textarea {
-    width: 100%;
-    padding: 10px 12px;
-    border-radius: var(--radius);
-    border: 1px solid #d6d9df;
-    font-size: 15px;
-    outline: none;
-    transition: border 0.3s;
-  }
-  input:focus, select:focus, textarea:focus { border-color: var(--accent); }
-
-  textarea { min-height: 80px; resize: vertical; }
-
-  fieldset { border: 2px dashed #ffd6dc; padding: 15px; border-radius: var(--radius); }
-  legend { font-weight: bold; color: var(--accent-dark); }
-
-  .actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 10px; }
-  button {
-    border: none;
-    padding: 10px 18px;
-    border-radius: var(--radius);
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-  }
-  button[type="reset"] { background: #e5e7eb; color: #111; }
-  button[type="submit"] { background: var(--accent); color: #fff; }
-
-  /* Mobile portrait */
-  @media (max-width: 768px) {
-    body { flex-direction: column; }
-    .sidebar { width: 100%; flex-direction: row; justify-content: space-around; border-radius: 0; padding: 20px 10px; margin-bottom: 20px; }
-    .main { padding: 15px; }
-    .row { flex-direction: column; }
-  }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: #f2f2f2;
+    }
+    .container {
+        max-width: 500px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+    textarea {
+        height: 70px;
+        resize: none;
+    }
+    button {
+        margin-top: 15px;
+        padding: 10px;
+        width: 48%;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    .btn-submit {
+        background: #4CAF50;
+        color: white;
+    }
+    .btn-reset {
+        background: #ccc;
+    }
 </style>
 </head>
+
 <body>
 
-  <!-- Sidebar Dashboard -->
-  <div class="sidebar">
-    <h2>My Dashboard</h2>
-    <a href="#">Dashboard</a>
-    <a href="#">Students</a>
-    <a href="#">Reports</a>
-    <a href="#">Settings</a>
-  </div>
+<div class="container">
+    <h2>Student Information Form</h2>
 
-  <!-- Main Content -->
-  <div class="main">
-    <header>
-      <h1>Student Information Form</h1>
-      <p>Please fill in the student's information below.</p>
-    </header>
+    <form id="studentForm">
 
-    <section class="card">
-      <form action="#" method="post" novalidate>
-        <fieldset>
-          <legend>Personal Information</legend>
+        <label>Last Name</label>
+        <input id="lastName">
 
-          <div class="row">
-            <div class="col">
-              <label for="lastName">Last Name:</label>
-              <input id="lastName" type="text" required placeholder="Your answer">
-            </div>
-            <div class="col">
-              <label for="firstName">First Name:</label>
-              <input id="firstName" type="text" required placeholder="Your answer">
-            </div>
-            <div class="col">
-              <label for="middleName">Middle Name (Optional):</label>
-              <input id="middleName" type="text" placeholder="Your answer">
-            </div>
-          </div>
+        <label>First Name</label>
+        <input id="firstName">
 
-          <div class="row">
-            <div class="col">
-              <label for="course">Course:</label>
-              <select id="course" required>
-                <option value="">Select Course</option>
-                <option>BSIT</option>
-                <option>BSCPE</option>
-                <option>BSBA</option>
-                <option>BSEd</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="col">
-              <label for="year">Year:</label>
-              <select id="year" required>
-                <option value="">Select Year</option>
-                <option>1st Year</option>
-                <option>2nd Year</option>
-                <option>3rd Year</option>
-                <option>4th Year</option>
-              </select>
-            </div>
-            <div class="col">
-              <label for="section">Section:</label>
-              <select id="section">
-                <option value="">Select Section</option>
-                <option>A</option>
-                <option>B</option>
-                <option>C</option>
-                <option>D</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
+        <label>Middle Name</label>
+        <input id="middleName">
 
-          <div class="row">
-            <div class="col">
-              <label for="studentNumber">Student Number:</label>
-              <input id="studentNumber" type="text" required placeholder="Your answer">
-            </div>
-            <div class="col">
-              <label for="dob">Date of Birth:</label>
-              <input id="dob" type="date" required>
-            </div>
-            <div class="col">
-              <label>Gender:</label>
-              <div style="display:flex; gap:10px; align-items:center">
-                <label><input type="radio" name="gender" required> Male</label>
-                <label><input type="radio" name="gender"> Female</label>
-                <label><input type="radio" name="gender"> Other</label>
-              </div>
-            </div>
-          </div>
+        <label>Course</label>
+        <select id="course">
+            <option>BSIT</option>
+            <option>BSCPE</option>
+            <option>BSBA</option>
+            <option>BSEd</option>
+            <option>Other</option>
+        </select>
 
-          <label for="address">Complete Address:</label>
-          <textarea id="address" required placeholder="Your answer"></textarea>
+        <label>Year</label>
+        <select id="year">
+            <option>1st Year</option>
+            <option>2nd Year</option>
+            <option>3rd Year</option>
+            <option>4th Year</option>
+        </select>
 
-          <div class="row">
-            <div class="col">
-              <label for="contact">Contact Number:</label>
-              <input id="contact" type="tel" placeholder="Your answer">
-            </div>
-            <div class="col">
-              <label for="email">Email:</label>
-              <input id="email" type="email" placeholder="Your answer">
-            </div>
-          </div>
+        <label>Section</label>
+        <select id="section">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+        </select>
 
-        </fieldset>
+        <label>Student Number</label>
+        <input id="studentNumber">
 
-        <div class="actions">
-          <button type="reset">Reset</button>
-          <button type="submit">Submit</button>
+        <label>Date of Birth</label>
+        <input type="date" id="dob">
+
+        <label>Gender</label>
+        <select id="gender">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+
+        <label>Complete Address</label>
+        <textarea id="address"></textarea>
+
+        <label>Contact Number</label>
+        <input id="contact">
+
+        <label>Email</label>
+        <input id="email">
+
+        <div style="display: flex; justify-content: space-between;">
+            <button type="reset" class="btn-reset">Reset</button>
+            <button type="submit" class="btn-submit">Submit</button>
         </div>
 
-      </form>
-    </section>
-  </div>
+    </form>
+</div>
 
 </body>
-  </html>
-  
+</html>
